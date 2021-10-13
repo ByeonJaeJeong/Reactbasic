@@ -1,9 +1,16 @@
-function Subject(props){
-    return (
-      <header>
-        <h1>{props.title}</h1>
-        {props.sub}
-      </header>
-    );
+import { Component } from "react/cjs/react.production.min";
+
+class Subject extends Component{
+    render(){
+      return (
+        <header>
+          <h1><a href="/" onClick ={function(e){
+            e.preventDefault();
+            this.props.onChagePage();
+          }.bind(this)}>{this.props.title}</a></h1>
+          {this.props.sub}
+        </header>
+      );
+    }
   }
   export default Subject;
