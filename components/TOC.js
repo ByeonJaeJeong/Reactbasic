@@ -1,5 +1,4 @@
 import { Component } from "react";
-import App from "../App";
 
 class TOC extends Component{
   render(){
@@ -7,15 +6,15 @@ class TOC extends Component{
     var data= this.props.data;
     var i =0;
     while(i < data.length){
-      lists.push(<li><a 
-        href={"/content/"+data[i].id}
-        onClick = {function(e){
-          this.setState({
-            mode: 'read'
-          });
+      lists.push(
+      <li key ={data[i].id}><a 
+        href={"/content/"+ data[i].id}
+        onClick = {function(id, e){
           e.preventDefault();
-        }.bind(App)}  
-      >{data[i].title}</a></li>);
+          this.props.onChangePage(id);
+        }.bind(this, data[i].id)}  
+      >{data[i].title}
+      </a></li>);
       i+=1;
     }
       return(
